@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:PPPK_WPF2ndDelivery"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ImageBrush x:Key="GradientBackground" ImageSource="/Assets/gradient.png"/>
     </Application.Resources>
 </Application>
