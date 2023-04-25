@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PPPK_WPF2ndDelivery.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace PPPK_WPF2ndDelivery
         public MainWindow()
         {
             InitializeComponent();
+            Frame.Navigate(new MainPage(new MainPageViewModel()) { Frame = Frame });
         }
     }
 }

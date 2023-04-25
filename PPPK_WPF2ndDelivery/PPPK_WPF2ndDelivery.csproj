@@ -59,9 +59,42 @@
     <Compile Include="Dal\IRepository.cs" />
     <Compile Include="Dal\RepositoryFactory.cs" />
     <Compile Include="Dal\SqlRepository.cs" />
+    <Compile Include="FramedPage.cs" />
+    <Compile Include="ListPetOwnerPage.xaml.cs">
+      <DependentUpon>ListPetOwnerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListPetPage.xaml.cs">
+      <DependentUpon>ListPetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListVetPage.xaml.cs">
+      <DependentUpon>ListVetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Pet.cs" />
     <Compile Include="Models\PetOwner.cs" />
     <Compile Include="Utils\ImageUtils.cs" />
+    <Compile Include="ViewModel\MainPageViewModel.cs" />
+    <Compile Include="ViewModel\PetOwnerViewModel.cs" />
+    <Compile Include="ViewModel\PetViewModel.cs" />
+    <Compile Include="ViewModel\VeterinarianViewModel.cs" />
+    <Page Include="ListPetOwnerPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListPetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListVetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

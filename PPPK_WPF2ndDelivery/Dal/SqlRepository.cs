@@ -35,7 +35,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                         Value = veterinarian.Picture
                     });
 
-                    SqlParameter id = new SqlParameter(nameof(veterinarian.IDVeterinarian), System.Data.SqlDbType.Int)
+                    SqlParameter id = new SqlParameter(nameof(Veterinarian.IDVeterinarian), System.Data.SqlDbType.Int)
                     {
                         Direction = System.Data.ParameterDirection.Output
                     };
@@ -59,13 +59,12 @@ namespace PPPK_WPF2ndDelivery.Dal
                     cmd.Parameters.AddWithValue(nameof(Veterinarian.FirstName), veterinarian.FirstName);
                     cmd.Parameters.AddWithValue(nameof(Veterinarian.LastName), veterinarian.LastName);
                     cmd.Parameters.AddWithValue(nameof(Veterinarian.Email), veterinarian.Email);
+                    cmd.Parameters.AddWithValue(nameof(Veterinarian.IDVeterinarian), veterinarian.IDVeterinarian);
 
                     cmd.Parameters.Add(new SqlParameter(nameof(Veterinarian.Picture), System.Data.SqlDbType.Binary, veterinarian.Picture.Length)
                     {
                         Value = veterinarian.Picture
                     });
-
-                    cmd.Parameters.AddWithValue(nameof(Veterinarian.IDVeterinarian), veterinarian.IDVeterinarian);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -167,7 +166,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                         Value = petOwner.Picture
                     });
 
-                    SqlParameter id = new SqlParameter(nameof(petOwner.IDPetOwner), System.Data.SqlDbType.Int)
+                    SqlParameter id = new SqlParameter(nameof(PetOwner.IDPetOwner), System.Data.SqlDbType.Int)
                     {
                         Direction = System.Data.ParameterDirection.Output
                     };
@@ -191,13 +190,12 @@ namespace PPPK_WPF2ndDelivery.Dal
                     cmd.Parameters.AddWithValue(nameof(PetOwner.FirstName), petOwner.FirstName);
                     cmd.Parameters.AddWithValue(nameof(PetOwner.LastName), petOwner.LastName);
                     cmd.Parameters.AddWithValue(nameof(PetOwner.Email), petOwner.Email);
+                    cmd.Parameters.AddWithValue(nameof(PetOwner.IDPetOwner), petOwner.IDPetOwner);
 
                     cmd.Parameters.Add(new SqlParameter(nameof(PetOwner.Picture), System.Data.SqlDbType.Binary, petOwner.Picture.Length)
                     {
                         Value = petOwner.Picture
                     });
-
-                    cmd.Parameters.AddWithValue(nameof(PetOwner.IDPetOwner), petOwner.IDPetOwner);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -293,16 +291,15 @@ namespace PPPK_WPF2ndDelivery.Dal
                     cmd.Parameters.AddWithValue(nameof(Pet.PetName), pet.PetName);
                     cmd.Parameters.AddWithValue(nameof(Pet.Species), pet.Species);
                     cmd.Parameters.AddWithValue(nameof(Pet.Age), pet.Age);
+                    cmd.Parameters.AddWithValue(nameof(Pet.PetOwnerID), pet.PetOwnerID);
+                    cmd.Parameters.AddWithValue(nameof(Pet.VeterinarianID), pet.VeterinarianID);
 
                     cmd.Parameters.Add(new SqlParameter(nameof(Pet.Picture), System.Data.SqlDbType.Binary, pet.Picture.Length)
                     {
                         Value = pet.Picture
                     });
 
-                    cmd.Parameters.AddWithValue(nameof(Pet.PetOwnerID), pet.PetOwnerID);
-                    cmd.Parameters.AddWithValue(nameof(Pet.VeterinarianID), pet.VeterinarianID);
-
-                    SqlParameter id = new SqlParameter(nameof(pet.IDPet), System.Data.SqlDbType.Int)
+                    SqlParameter id = new SqlParameter(nameof(Pet.IDPet), System.Data.SqlDbType.Int)
                     {
                         Direction = System.Data.ParameterDirection.Output
                     };
@@ -326,16 +323,14 @@ namespace PPPK_WPF2ndDelivery.Dal
                     cmd.Parameters.AddWithValue(nameof(Pet.PetName), pet.PetName);
                     cmd.Parameters.AddWithValue(nameof(Pet.Species), pet.Species);
                     cmd.Parameters.AddWithValue(nameof(Pet.Age), pet.Age);
+                    cmd.Parameters.AddWithValue(nameof(Pet.PetOwnerID), pet.PetOwnerID);
+                    cmd.Parameters.AddWithValue(nameof(Pet.VeterinarianID), pet.VeterinarianID);
+                    cmd.Parameters.AddWithValue(nameof(Pet.IDPet), pet.IDPet);
 
                     cmd.Parameters.Add(new SqlParameter(nameof(Pet.Picture), System.Data.SqlDbType.Binary, pet.Picture.Length)
                     {
                         Value = pet.Picture
                     });
-
-                    cmd.Parameters.AddWithValue(nameof(Pet.PetOwnerID), pet.PetOwnerID);
-                    cmd.Parameters.AddWithValue(nameof(Pet.VeterinarianID), pet.VeterinarianID);
-
-                    cmd.Parameters.AddWithValue(nameof(Pet.IDPet), pet.IDPet);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -351,7 +346,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue(nameof(pet.IDPet), pet.IDPet);
+                    cmd.Parameters.AddWithValue(nameof(Pet.IDPet), pet.IDPet);
 
                     cmd.ExecuteNonQuery();
                 }
