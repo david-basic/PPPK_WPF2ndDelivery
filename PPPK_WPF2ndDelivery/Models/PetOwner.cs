@@ -22,7 +22,6 @@ namespace PPPK_WPF2ndDelivery.Models
         public string LastName { get; set; }
         public string Email { get; set; }
         public byte[] Picture { get; set; }
-
         public BitmapImage Image // ovo nam je samo da mozemo dobiti bitmap image iz byte arraya koji je spremljen u entitetu Picture, jer je byte[] isto u bazi 
         {
             get => ImageUtils.ByteArrayToBitmapImage(Picture);

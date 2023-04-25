@@ -1,18 +1,13 @@
 ﻿using PPPK_WPF2ndDelivery.Dal;
 using PPPK_WPF2ndDelivery.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PPPK_WPF2ndDelivery.ViewModel
 {
     public class VeterinarianViewModel
     {
-        public ObservableCollection<Veterinarian> Veterinarians { get; } // readonly observable
-
+        public ObservableCollection<Veterinarian> Veterinarians { get; }
         public VeterinarianViewModel()
         {
             Veterinarians = new ObservableCollection<Veterinarian>(RepositoryFactory.GetRepository().GetAllVeterinarians());
@@ -25,7 +20,6 @@ namespace PPPK_WPF2ndDelivery.ViewModel
             {
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Add:
                     RepositoryFactory.GetRepository().AddVeterinarian(Veterinarians[e.NewStartingIndex]);
-                    // u kolekciji veterinara na nekom novom indeksu postoji dodani novi veterinar
                     break;
                 case System.Collections.Specialized.NotifyCollectionChangedAction.Remove:
                     RepositoryFactory.GetRepository().DeleteVeterinarian(e.OldItems.OfType<Veterinarian>().ToList()[0]);
@@ -36,7 +30,6 @@ namespace PPPK_WPF2ndDelivery.ViewModel
             }
         }
 
-        public void Update(Veterinarian veterinarian) => Veterinarians[Veterinarians.IndexOf(veterinarian)] = veterinarian;
-        // postavi veterinara na njegovo mjesto da bi se na listi dogodio event, jer inace update evente ne prepoznaje jer se događaju na njoj a ne iz vana
+        internal void Update(Veterinarian veterinarian) => Veterinarians[Veterinarians.IndexOf(veterinarian)] = veterinarian;
     }
 }

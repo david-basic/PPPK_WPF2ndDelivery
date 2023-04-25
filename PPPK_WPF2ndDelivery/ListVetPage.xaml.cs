@@ -1,18 +1,7 @@
-﻿using PPPK_WPF2ndDelivery.ViewModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using PPPK_WPF2ndDelivery.Models;
+using PPPK_WPF2ndDelivery.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PPPK_WPF2ndDelivery
 {
@@ -29,17 +18,29 @@ namespace PPPK_WPF2ndDelivery
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("ADD");
+            Frame.Navigate(new EditVetPage(VeterinarianViewModel)
+            {
+                Frame = Frame
+            });
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("EDIT");
+            if (LvVeterinarians.SelectedItem != null)
+            {
+                Frame.Navigate(new EditVetPage(VeterinarianViewModel, LvVeterinarians.SelectedItem as Veterinarian)
+                {
+                    Frame = Frame
+                });
+            }
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("DELETE");
+            if (LvVeterinarians.SelectedItem != null)
+            {
+                VeterinarianViewModel.Veterinarians.Remove(LvVeterinarians.SelectedItem as Veterinarian);
+            }
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

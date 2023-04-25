@@ -3,17 +3,15 @@ using PPPK_WPF2ndDelivery.Utils;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PPPK_WPF2ndDelivery.Dal
 {
     internal class SqlRepository : IRepository
     {
-        private static string cs = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
+        private static readonly string cs = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
 
         #region Veterinarian
         public void AddVeterinarian(Veterinarian veterinarian)
@@ -24,20 +22,20 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue(nameof(Veterinarian.FirstName), veterinarian.FirstName);
                     cmd.Parameters.AddWithValue(nameof(Veterinarian.LastName), veterinarian.LastName);
                     cmd.Parameters.AddWithValue(nameof(Veterinarian.Email), veterinarian.Email);
 
-                    cmd.Parameters.Add(new SqlParameter(nameof(Veterinarian.Picture), System.Data.SqlDbType.Binary, veterinarian.Picture.Length)
+                    cmd.Parameters.Add(new SqlParameter(nameof(Veterinarian.Picture), SqlDbType.Binary, veterinarian.Picture.Length)
                     {
                         Value = veterinarian.Picture
                     });
 
-                    SqlParameter id = new SqlParameter(nameof(Veterinarian.IDVeterinarian), System.Data.SqlDbType.Int)
+                    SqlParameter id = new SqlParameter(nameof(Veterinarian.IDVeterinarian), SqlDbType.Int)
                     {
-                        Direction = System.Data.ParameterDirection.Output
+                        Direction = ParameterDirection.Output
                     };
                     cmd.Parameters.Add(id);
                     cmd.ExecuteNonQuery();
@@ -54,14 +52,14 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue(nameof(Veterinarian.FirstName), veterinarian.FirstName);
                     cmd.Parameters.AddWithValue(nameof(Veterinarian.LastName), veterinarian.LastName);
                     cmd.Parameters.AddWithValue(nameof(Veterinarian.Email), veterinarian.Email);
                     cmd.Parameters.AddWithValue(nameof(Veterinarian.IDVeterinarian), veterinarian.IDVeterinarian);
 
-                    cmd.Parameters.Add(new SqlParameter(nameof(Veterinarian.Picture), System.Data.SqlDbType.Binary, veterinarian.Picture.Length)
+                    cmd.Parameters.Add(new SqlParameter(nameof(Veterinarian.Picture), SqlDbType.Binary, veterinarian.Picture.Length)
                     {
                         Value = veterinarian.Picture
                     });
@@ -78,7 +76,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue(nameof(Veterinarian.IDVeterinarian), veterinarian.IDVeterinarian);
 
@@ -96,7 +94,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
@@ -119,7 +117,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue(nameof(Veterinarian.IDVeterinarian), idVeterinarian);
 
@@ -155,7 +153,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue(nameof(PetOwner.FirstName), petOwner.FirstName);
                     cmd.Parameters.AddWithValue(nameof(PetOwner.LastName), petOwner.LastName);
@@ -185,14 +183,14 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue(nameof(PetOwner.FirstName), petOwner.FirstName);
                     cmd.Parameters.AddWithValue(nameof(PetOwner.LastName), petOwner.LastName);
                     cmd.Parameters.AddWithValue(nameof(PetOwner.Email), petOwner.Email);
                     cmd.Parameters.AddWithValue(nameof(PetOwner.IDPetOwner), petOwner.IDPetOwner);
 
-                    cmd.Parameters.Add(new SqlParameter(nameof(PetOwner.Picture), System.Data.SqlDbType.Binary, petOwner.Picture.Length)
+                    cmd.Parameters.Add(new SqlParameter(nameof(PetOwner.Picture), SqlDbType.Binary, petOwner.Picture.Length)
                     {
                         Value = petOwner.Picture
                     });
@@ -209,7 +207,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue(nameof(PetOwner.IDPetOwner), petOwner.IDPetOwner);
 
@@ -227,7 +225,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
@@ -250,7 +248,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue(nameof(PetOwner.IDPetOwner), idPetOwner);
 
@@ -286,7 +284,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue(nameof(Pet.PetName), pet.PetName);
                     cmd.Parameters.AddWithValue(nameof(Pet.Species), pet.Species);
@@ -299,9 +297,9 @@ namespace PPPK_WPF2ndDelivery.Dal
                         Value = pet.Picture
                     });
 
-                    SqlParameter id = new SqlParameter(nameof(Pet.IDPet), System.Data.SqlDbType.Int)
+                    SqlParameter id = new SqlParameter(nameof(Pet.IDPet), SqlDbType.Int)
                     {
-                        Direction = System.Data.ParameterDirection.Output
+                        Direction = ParameterDirection.Output
                     };
                     cmd.Parameters.Add(id);
                     cmd.ExecuteNonQuery();
@@ -318,7 +316,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue(nameof(Pet.PetName), pet.PetName);
                     cmd.Parameters.AddWithValue(nameof(Pet.Species), pet.Species);
@@ -344,7 +342,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue(nameof(Pet.IDPet), pet.IDPet);
 
@@ -362,7 +360,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
@@ -385,7 +383,7 @@ namespace PPPK_WPF2ndDelivery.Dal
                 using (SqlCommand cmd = con.CreateCommand())
                 {
                     cmd.CommandText = MethodBase.GetCurrentMethod().Name;
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandType = CommandType.StoredProcedure;
 
                     cmd.Parameters.AddWithValue(nameof(Pet.IDPet), idPet);
 

@@ -1,4 +1,5 @@
-﻿using PPPK_WPF2ndDelivery.ViewModel;
+﻿using PPPK_WPF2ndDelivery.Models;
+using PPPK_WPF2ndDelivery.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,17 +30,29 @@ namespace PPPK_WPF2ndDelivery
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("ADD");
+            Frame.Navigate(new EditPetOwnerPage(PetOwnerViewModel)
+            {
+                Frame = Frame
+            });
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("EDIT");
+            if (LvPetOwners.SelectedItem != null)
+            {
+                Frame.Navigate(new EditPetOwnerPage(PetOwnerViewModel, LvPetOwners.SelectedItem as PetOwner)
+                {
+                    Frame = Frame
+                });
+            }
         }
 
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
-            Console.WriteLine("DELETE");
+            if (LvPetOwners.SelectedItem != null)
+            {
+                PetOwnerViewModel.PetOwners.Remove(LvPetOwners.SelectedItem as PetOwner);
+            }
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

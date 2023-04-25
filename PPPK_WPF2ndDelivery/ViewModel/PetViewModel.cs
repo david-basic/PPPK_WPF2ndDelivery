@@ -1,11 +1,7 @@
 ﻿using PPPK_WPF2ndDelivery.Dal;
 using PPPK_WPF2ndDelivery.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PPPK_WPF2ndDelivery.ViewModel
 {

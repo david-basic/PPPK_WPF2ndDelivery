@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media.Imaging;
 
 namespace PPPK_WPF2ndDelivery.Utils
@@ -18,30 +13,29 @@ namespace PPPK_WPF2ndDelivery.Utils
                 var bitmap = new BitmapImage();
                 bitmap.BeginInit();
                 bitmap.StreamSource = memoryStream;
-                bitmap.CacheOption = BitmapCacheOption.OnLoad; // cim se loada cache it i onda kasnije freeze da se ne moze modificirat
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
                 bitmap.EndInit();
-                bitmap.Freeze(); //Makes the current object unmodifiable
+                bitmap.Freeze();
                 return bitmap;
             }
         }
+
         public static byte[] BitmapImageToByteArray(BitmapImage image)
         {
             var jpegEncoder = new JpegBitmapEncoder();
             jpegEncoder.Frames.Add(BitmapFrame.Create(image));
-
             using (var memoryStream = new MemoryStream())
             {
                 jpegEncoder.Save(memoryStream);
                 return memoryStream.ToArray();
             }
         }
-        internal static byte[] ByteArrayFromSqlDataReader(SqlDataReader dr, int column)
+
+        public static byte[] ByteArrayFromSqlDataReader(SqlDataReader dr, int column)
         {
             int bufferSize = 1024;
-            byte[] buffer = new byte[bufferSize];
-
             int currentBytes = 0;
-
+            byte[] buffer = new byte[bufferSize];
             using (var memoryStream = new MemoryStream())
             {
                 using (var binaryWriter = new BinaryWriter(memoryStream))
@@ -52,9 +46,7 @@ namespace PPPK_WPF2ndDelivery.Utils
                         readBytes = (int)dr.GetBytes(column, currentBytes, buffer, 0, bufferSize);
                         binaryWriter.Write(buffer, 0, readBytes);
                         currentBytes += readBytes;
-
                     } while (readBytes == bufferSize);
-
                     return memoryStream.ToArray();
                 }
             }
