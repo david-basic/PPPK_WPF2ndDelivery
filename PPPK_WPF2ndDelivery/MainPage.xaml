@@ -1,0 +1,56 @@
+﻿<local:FramedPage x:Class="PPPK_WPF2ndDelivery.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PPPK_WPF2ndDelivery"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="600"
+      Title="Main Page">
+
+    <Grid Background="{StaticResource GradientBackground}">
+        <Label
+            x:Name="LbTitle"
+            Foreground="White"
+            FontSize="18"
+            FontWeight="Bold"
+            Width="350"
+            Height="40"
+            HorizontalContentAlignment="Center"
+            HorizontalAlignment="Center"
+            Margin="115,74,85,310"/>
+        <Button 
+            x:Name="BtnOwners"
+            Content="Owners"
+            Foreground="Black"
+            Background="WhiteSmoke"
+            FontWeight="Bold"
+            Click="BtnOwners_Click"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Center" 
+            Margin="260,0,0,0" 
+            Height="35" Width="100"/>
+        <Button
+            x:Name="BtnPets"
+            Content="Pets"
+            Foreground="Black"
+            FontWeight="Bold"
+            Background="WhiteSmoke"
+            Click="BtnPets_Click"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Center" 
+            Margin="415,0,0,0" 
+            Height="35" Width="100"/>
+        <Button 
+            x:Name="BtnVets"
+            Content="Vets"
+            Foreground="Black"
+            Background="WhiteSmoke"
+            FontWeight="Bold"
+            Click="BtnVets_Click"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Center" 
+            Margin="100,0,0,0" 
+            Height="35" Width="100"/>
+    </Grid>
+</local:FramedPage>
